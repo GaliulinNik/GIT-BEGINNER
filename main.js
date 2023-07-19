@@ -59,4 +59,18 @@ arr.push(9999);
 arr.shift();
 // console.log(arr);
 
-arr.forEach((item) => console.log(item));
+// arr.forEach((item) => console.log(item));
+console.log(1);
+setTimeout(() => {
+  console.log(2);
+});
+console.log(3);
+console.log(4);
+
+const res1 = add(2, 3);
+const add = async (a, b) => {
+  a + b;
+};
+const res2 = await add(2, 3);
+console.log(res1);
+console.log(res2);

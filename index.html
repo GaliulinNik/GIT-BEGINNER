@@ -1,9 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <ul id="authors"></ul>
+    <script>
+      function createNode(element) {
+        return document.createElement(element);
+      }
+      function append(parent, el) {
+        return parent.appendChild(el);
+      }
+      const ul = document.getElementById("authors");
+      const url = "https://randomuser.me/api/?results=5";
+      fetch(url)
+        .then((resp) => resp.json())
+        .then(function (data) {
+          let authors = data.results;
+          return authors.map(function (author) {
+            let ol = createNode("ol");
+            let hr = createNode("hr");
+            let img = createNode("img");
+            let pFIO = createNode("p");
+            let pPOL = createNode("p");
+            img.src = author.picture.medium;
+            pFIO.innerHTML = `ФИО: ${author.name.first} ${author.name.last}`;
+            pPOL.innerHTML = `Пол: ${author.gender}`;
+            append(ol, img);
+            append(ol, pFIO);
+            append(ol, pPOL);
+            append(ol, hr);
+            append(ul, ol);
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    </script>
+  </body>
 </html>
