@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">alertLog</button>
+    <button class="btn2">alertLog</button>
+    <script>
+      const btn = document.getElementById("btn");
+      const btn2 = document.querySelector(".btn2");
+
+      function alertLog() {
+        console.log(this);
+      }
+
+      alertLog();
+
+      btn.addEventListener("click", alertLog);
+      btn2.addEventListener("click", alertLog);
+    </script>
+  </body>
+</html>
